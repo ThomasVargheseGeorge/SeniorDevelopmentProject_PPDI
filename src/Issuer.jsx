@@ -1,12 +1,10 @@
-import { useState } from "react";
 
-function Issuer({ did }) {
-
-    const [credential, setCredential] = useState("");
+function Issuer({ did, setCredential }) {
 
     function issueCredential() {
+
         if (!did) {
-            alert("No DID found");
+            alert("Create DID first");
             return;
         }
 
@@ -17,7 +15,7 @@ function Issuer({ did }) {
             status: "Valid"
         };
 
-        setCredential(JSON.stringify(newCredential, null, 2));
+        setCredential(newCredential);
     }
 
     return (
@@ -27,8 +25,6 @@ function Issuer({ did }) {
             <button onClick={issueCredential}>
                 Issue Student Credential
             </button>
-
-            <pre>{credential}</pre>
         </div>
     );
 }
