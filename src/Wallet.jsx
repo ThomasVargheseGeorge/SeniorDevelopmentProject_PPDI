@@ -1,26 +1,26 @@
 import { useState } from "react";
 
-function Wallet() {
+function Wallet({ setDid }) {
+
     const [account, setAccount] = useState("");
-    const [did, setDid] = useState("");
 
-async function connectWallet() {
-    if (typeof window.ethereum !== "undefined") {
-        try {
-            const accounts = await window.ethereum.request({
-                method: "eth_requestAccounts"
-            });
+    async function connectWallet() {
+        if (typeof window.ethereum !== "undefined") {
+            try {
+                const accounts = await window.ethereum.request({
+                    method: "eth_requestAccounts"
+                });
 
-            console.log("Connected account:", accounts[0]);
-            setAccount(accounts[0]);
+                console.log("Connected account:", accounts[0]);
+                setAccount(accounts[0]);
 
-        } catch (error) {
-            console.error("Connection error:", error);
+            } catch (error) {
+                console.error("Connection error:", error);
+            }
+        } else {
+            alert("MetaMask not detected. Please install MetaMask.");
         }
-    } else {
-        alert("MetaMask not detected. Please install MetaMask.");
     }
-}
 
     function createIdentity() {
         if(account){
@@ -44,8 +44,6 @@ async function connectWallet() {
             <button onClick={createIdentity}>
                 Create Decentralized Identity
             </button>
-
-            <p>DID: {did}</p>
         </div>
     );
 }
