@@ -1,4 +1,3 @@
-
 function Issuer({ did, setCredential }) {
 
     function issueCredential() {
@@ -20,13 +19,12 @@ function Issuer({ did, setCredential }) {
 
     return (
         <div>
-            <h2>Credential Issuer</h2>
+            <h2>Issuer</h2>
 
             <button onClick={issueCredential}>
-                Issue Student Credential
+                Issue Credential
             </button>
         </div>
     );
 }
-
 export default Issuer;

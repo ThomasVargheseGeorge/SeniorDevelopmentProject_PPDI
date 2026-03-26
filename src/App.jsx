@@ -11,13 +11,19 @@ function App() {
     return (
         <div>
 
-            <h1>Privacy-Preserving Decentralized Identity</h1>
+            <h1>Decentralized Identity System</h1>
 
-            <Wallet setDid={setDid} />
+            <Wallet 
+                setDid={setDid} 
+                credential={credential} 
+            />
 
             <p>DID: {did}</p>
 
-            <Issuer did={did} setCredential={setCredential} />
+            <Issuer 
+                did={did} 
+                setCredential={setCredential} 
+            />
 
             <Verifier credential={credential} />
 
