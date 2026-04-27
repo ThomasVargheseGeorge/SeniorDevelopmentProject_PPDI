@@ -6,27 +6,33 @@ import Verifier from "./Verifier";
 function App() {
 
     const [did, setDid] = useState("");
-    const [credential, setCredential] = useState(null);
+    const [credentials, setCredentials] = useState([]);
+    const [proof, setProof] = useState(null);
+
+    function addCredential(cred) {
+        setCredentials(prev => [...prev, cred]);
+    }
 
     return (
         <div>
-
             <h1>Decentralized Identity System</h1>
 
-            <Wallet 
-                setDid={setDid} 
-                credential={credential} 
+            <Wallet
+                setDid={setDid}
+                credentials={credentials}
+                setProof={setProof}
             />
 
             <p>DID: {did}</p>
 
-            <Issuer 
-                did={did} 
-                setCredential={setCredential} 
+            <Issuer
+                did={did}
+                addCredential={addCredential}
             />
 
-            <Verifier credential={credential} />
-
+            <Verifier
+                proof={proof}
+            />
         </div>
     );
 }

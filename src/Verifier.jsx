@@ -1,29 +1,29 @@
 import { useState } from "react";
 
-function Verifier({ credential }) {
+function Verifier({ proof }) {
 
     const [result, setResult] = useState("");
 
-    function verifyCredential() {
+    function verifyProof() {
 
-        if (!credential) {
-            setResult("No credential provided");
+        if (!proof) {
+            setResult("No proof provided");
             return;
         }
 
-        if (credential.status === "Valid") {
-            setResult("Credential Verified ✅");
+        if (proof.valid) {
+            setResult("Proof Verified ✅");
         } else {
-            setResult("Credential Invalid ❌");
+            setResult("Invalid Proof ❌");
         }
     }
 
     return (
         <div>
-            <h2>Credential Verifier</h2>
+            <h2>Proof Verifier</h2>
 
-            <button onClick={verifyCredential}>
-                Verify Credential
+            <button onClick={verifyProof}>
+                Verify Proof
             </button>
 
             <p>{result}</p>

@@ -1,4 +1,4 @@
-function Issuer({ did, setCredential }) {
+function Issuer({ did, addCredential }) {
 
     function issueCredential() {
 
@@ -7,14 +7,15 @@ function Issuer({ did, setCredential }) {
             return;
         }
 
-        const newCredential = {
+        const credential = {
             type: "StudentCredential",
             issuer: "University",
             holder: did,
             status: "Valid"
         };
 
-        setCredential(newCredential);
+        addCredential(credential);
+        alert("Credential Issued");
     }
 
     return (
@@ -27,4 +28,5 @@ function Issuer({ did, setCredential }) {
         </div>
     );
 }
+
 export default Issuer;
